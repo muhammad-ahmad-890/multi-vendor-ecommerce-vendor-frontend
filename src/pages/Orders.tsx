@@ -37,7 +37,7 @@ export default function Orders() {
   };
 
   const handleCreateOrder = () => {
-    navigate("/create-order");
+    navigate("/orders/create");
   };
 
   return (

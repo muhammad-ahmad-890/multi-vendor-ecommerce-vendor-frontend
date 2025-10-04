@@ -9,6 +9,7 @@ import Layout from "./components/layout/Layout";
 import Dashboard from "./pages/Dashboard";
 import Products from "./pages/Products";
 import Orders from "./pages/Orders";
+import CreateOrder from "./pages/CreateOrder";
 import Payments from "./pages/Payments";
 import Profile from "./pages/Profile";
 import LiveStream from "./pages/LiveStream";
@@ -77,6 +78,7 @@ export default function App() {
                 <Route path="products" element={<Products />} />
                 <Route path="products/new" element={<AddEditProductPage />} />
                 <Route path="orders" element={<Orders />} />
+                <Route path="orders/create" element={<CreateOrder />} />
                 <Route path="payments" element={<Payments />} />
                 <Route path="profile" element={<Profile />} />
                 <Route path="shows" element={<LiveStream />} />
