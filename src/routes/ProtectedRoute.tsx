@@ -1,8 +1,10 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { useAppSelector } from "../store";
+import { getCookie } from '../utils/cookies';
 
 export default function ProtectedRoute() {
-  const { user, status, loading } = useAppSelector((s) => s.auth);
+  const token = getCookie('authToken');
+  const { user, loading } = useAppSelector((s) => s.auth);
   const location = useLocation();
 
   if (loading) {
@@ -16,12 +18,12 @@ export default function ProtectedRoute() {
     );
   }
 
-  if (!user) {
+  if (!user && !token) {
     return <Navigate to="/login" replace state={{ from: location }} />;
   }
 
   // Check if user status is approved
-  if (user.status && user.status !== "APPROVED") {
+  if (user && user.status && user.status !== "APPROVED") {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="bg-white shadow-lg p-8 rounded-lg text-center space-y-4 max-w-md">
